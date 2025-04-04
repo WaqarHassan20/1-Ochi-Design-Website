@@ -9,11 +9,9 @@ import {
   Marquee,
   Navbar,
   Reviews,
-  StartProject
-}
-  from "./components";
+  StartProject,
+} from "./components";
 import LocomotiveScroll from "locomotive-scroll";
-
 
 export default function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -40,7 +38,7 @@ export default function App() {
           setIsLoading(false);
         }, 800);
       }
-    }
+    };
 
     // Check on mount
     checkDevice();
@@ -57,7 +55,7 @@ export default function App() {
     return () => {
       window.removeEventListener("resize", handleResize);
       clearTimeout(resizeTimer);
-    }
+    };
   }, [isMobile, scrollInstance]);
 
   useEffect(() => {
@@ -66,19 +64,19 @@ export default function App() {
         el: document.querySelector("[data-scroll-container]"),
         smooth: true,
         smartphone: {
-          smooth: false
+          smooth: false,
         },
         tablet: {
           smooth: false,
-          breakpoint: 1024
-        }
+          breakpoint: 1024,
+        },
       });
 
       setScrollInstance(scroll);
 
       return () => {
         if (scroll) scroll.destroy();
-      }
+      };
     }
   }, [isMobile, isLoading]);
 
@@ -91,86 +89,50 @@ export default function App() {
   }
 
   return (
-    <main
-      data-scroll-container
-      className="w-full min-h-screen"
-    >
+    <main data-scroll-container className="w-full min-h-screen">
       <div data-scroll-section>
         <Navbar />
       </div>
 
-      <div
-        data-scroll-section
-      >
-        <div
-          data-scroll
-          data-scroll-speed={!isMobile ? "-.3" : "0"}
-        >
+      <div data-scroll-section>
+        <div data-scroll data-scroll-speed={!isMobile ? "-.3" : "0"}>
           <LandingPage />
         </div>
       </div>
-      <div
-        data-scroll-section
-      >
-        <div
-          data-scroll
-          data-scroll-speed={!isMobile ? "-.1" : "0"}
-        >
+      <div data-scroll-section>
+        <div data-scroll data-scroll-speed={!isMobile ? "-.1" : "0"}>
           <Marquee />
         </div>
       </div>
-      <div
-        data-scroll-section
-      >
-        <div
-          data-scroll
-          data-scroll-speed={!isMobile ? "-0.2" : "0"}
-        >
+      <div data-scroll-section>
+        <div data-scroll data-scroll-speed={!isMobile ? "-0.2" : "0"}>
           <About />
         </div>
       </div>
-      <div
-        data-scroll-section
-      >
+      <div data-scroll-section>
         <Eyes />
       </div>
-      <div
-        data-scroll-section
-      >
+      <div data-scroll-section>
         <Featured />
       </div>
-      <div
-        data-scroll-section
-      >
+      <div data-scroll-section>
         <Reviews />
       </div>
-      <div
-        data-scroll-section
-      >
-        <div
-          data-scroll
-          data-scroll-speed={!isMobile ? "-0.1" : "0"}>
+      <div data-scroll-section>
+        <div data-scroll data-scroll-speed={!isMobile ? "-0.1" : "0"}>
           <BeforeFooter />
         </div>
       </div>
-      <div
-        data-scroll-section
-      >
-        <div
-          data-scroll
-          data-scroll-speed={!isMobile ? "0.1" : "0"}>
+      <div data-scroll-section>
+        <div data-scroll data-scroll-speed={!isMobile ? "0.1" : "0"}>
           <StartProject />
         </div>
       </div>
-      <div
-        data-scroll-section
-      >
-        <div
-          data-scroll
-          data-scroll-speed={!isMobile ? "-0.2" : "0"}>
+      <div data-scroll-section>
+        <div data-scroll data-scroll-speed={!isMobile ? "-0.2" : "0"}>
           <Footer />
         </div>
       </div>
     </main>
-  )
+  );
 }
